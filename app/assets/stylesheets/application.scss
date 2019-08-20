@@ -1,0 +1,67 @@
+
+@import "bootstrap";
+@import "registration";
+@import "posts";
+@import "active_storage_drag_and_drop";
+
+*{
+	margin: 0;
+	padding-left :5px;
+	background-color: light;
+}
+ 
+.bgimg{
+ 
+  background: lightblue url('/bg1.jpg') no-repeat fixed center;
+
+  }
+
+ .menu{
+ 	float: right;
+
+ }
+
+nav{
+	
+	padding-top: 1px;
+	background-color: #bb1133;
+}
+
+ul {
+	float:right;
+}
+
+ul li{
+
+	display: inline-block; 
+	text-decoration: none;
+	margin-left: 3px;
+}
+
+.linkstyle{
+	text-decoration: none;
+	color:white;
+}
+
+.linkstyle :hover{
+	text-decoration: none;
+	color:black;
+	font:12px;
+}
+
+footer{
+	
+}
+
+
+
+.postcontainer{
+	margin-left: 20%;
+	margin-right: 20%;
+}
+
+
+.modal_btn{
+	margin-left: 40%;
+	margin-bottom: 30px;
+	}

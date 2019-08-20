@@ -1,0 +1,32 @@
+
+<div  id="OnePost_<%= post.id %>"  class="border postbox" >
+	<%= post.user.name %><br />
+			<font size="1"><%=post.created_at %></font>&nbsp;
+			<% if post.user.id == current_user.id %>
+				<%= link_to 'edit', edit_user_post_path(current_user.id ,post.id) %> &nbsp;
+				<%= link_to 'delete', user_post_path(current_user.id ,post.id), method: :delete ,data:{confirm: "want to delete"},class: 'button', remote: true %> &nbsp;
+			<% end %>
+			<p id="post_content_<%= post.id %>" ><%= post.text %></p>
+			
+			<%  post.images.each do |image| %>
+  			<%= image_tag image, width:'200px', height:'200px' %>
+  		<% end %>
+
+		
+		  <div id="post_<%= post.id %>">
+			  <% post.comments.each do |comment|%>
+			  	 <div id="PostComment_<%= comment.id %>">
+			  	 		<%= render "comments/comment" , comment: comment %>
+					 </div>
+			  <% end %>
+			</div>
+
+			<hr>
+			<div id="CreateComment">
+				 <%= form_for [current_user, post, Comment.new],remote: true do |f| %>
+				   <p id="commet_txt"> <%= f.text_area :text ,style:"width: 60%; height:30px; margin-top:3px;" %></p> &nbsp;
+					 <%= f.submit "Comment"  %>
+	 		   <% end %>
+		  </div>
+</div>
+	<br>

@@ -1,0 +1,19 @@
+
+<div>
+  <h5>Chat with <%= @other_user.name %></h5>
+  <% if @chat.messages.any? %>
+    <div id="messages">
+      <%= render partial: 'message/message', collection: @chat.messages.order(id: :asc)%>
+    </div>
+  <%else%>
+    <div id="messages">
+    </div>
+  <%end%>
+</div><%= render 'message/message_form', message: @message, chat: @chat %>
+</div><script>
+  createMessageChannel();
+  // app/assets/javascripts/channels/messages.js 
+  messageForm();
+  // app/assets/javascripts/messages_form.js
+</script>
+

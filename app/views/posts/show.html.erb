@@ -1,0 +1,32 @@
+
+<center fieldset='1'>
+<div style="border: 1px solid;">
+	<div style="border: 1px solid;">
+		<%= @post.user.name %><br />
+		<font size="1"><%= @post.created_at %> </font> &nbsp;
+
+		<%= link_to 'edit', edit_user_post_path(@post.user.id,@post)%> &nbsp;
+		<%= link_to 'delete', user_post_path(@post), method: :delete ,data:{confirm: "want to delete"} %> &nbsp;
+		<p>
+			<%= @post.text %>
+		</p>
+		<%  @post.images.each do |image| %>
+  			<%= image_tag image, width:'200px', height:'200px' %>
+  	<% end %>
+	</div>
+	<button >
+		<%= link_to 'comment ', new_user_post_comment_path(current_user.id,@post.id)%>
+	</button>
+
+	<% @comment.each do |c|%>
+	<p ><b><%= c.user.name %> </b>&nbsp;&nbsp;<%= c.text %>&nbsp;&nbsp;<%= link_to 'edit', edit_user_post_comment_path(c.id,c.user_id,c.post_id)%> &nbsp;&nbsp;
+		<%= link_to 'delete', user_post_comment_path(c.id,c.user_id,c.post_id), method: :delete ,data:{confirm: "want to delete"} %> &nbsp;</p>
+	<% end %>
+
+
+</div>
+</center>
+<br />
+<br />
+<br /><br />
+<%= link_to 'back', welcome_index_path%> &nbsp;

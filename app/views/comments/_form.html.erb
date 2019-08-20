@@ -1,0 +1,6 @@
+
+		<%= form_for [current_user ,@post , @comment] do |f| %>
+				<%= f.text_area :text ,style:"width: 65%; height:30px; margin-top:3px; " %> &nbsp;	
+				<%= f.submit %>
+		<% end %>
+	

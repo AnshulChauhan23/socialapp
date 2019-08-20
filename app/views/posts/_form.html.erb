@@ -1,0 +1,6 @@
+<%= form_for [current_user, @post] do |f| %>
+	<%= current_user.name %><br>
+	<%= f.text_area :text %><br>
+	<%= f.drag_and_drop_file_field :images, 'Drag and drop images here!' %><br>
+	<%= f.submit  %>
+<% end %>

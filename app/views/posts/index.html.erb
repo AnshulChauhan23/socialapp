@@ -1,0 +1,49 @@
+<div class="container">
+<div class="col-md-12"><h1 align="center">Posts </h1></div>
+
+
+<div class="col-md-6 postcontainer " id="PostContent">
+  <% @posts.each do |post| %>
+  	
+  		<%= render 'post', post: post %>
+
+     <br />
+     <br />
+  <% end %>
+   <br />
+  <br />
+</div> 
+
+
+<button type="button" class="btn btn-primary" style="margin-bottom: 50px;" data-toggle="modal" data-target="#myModal">
+ Create Post </button>
+
+<!-- The Modal -->
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title"><%= current_user.name %></h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+      	<%= form_for [current_user, @post], url:{action: 'create'} , remote: true do |form|%>
+		<p id="post_txt"><%= form.text_area :text ,style:"width: 100%;"  %></p>
+      <%= form.file_field :images, multiple: true %><br>
+      </div>
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+
+         <button class="btn btn-success " id="myBtn" type=" submit" >Post</button>
+		<% end %>
+      </div>
+
+    </div>
+  </div>
+</div>
+</div>

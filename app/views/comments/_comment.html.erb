@@ -1,0 +1,13 @@
+<hr>
+<font size="3px;"><b><%= current_user.name %></b></font>&nbsp;&nbsp;
+<%= comment.text %>  &nbsp;&nbsp;
+<small>	
+	<% if comment.user_id == current_user.id %>  
+		<%= link_to 'edit', edit_user_post_comment_path(current_user.id ,comment.post.id,comment.id)%> &nbsp;&nbsp;	
+	<% end %>
+	<% if comment.user_id == current_user.id || comment.post.user_id == current_user.id %> 
+		<%= link_to 'delete', user_post_comment_path(comment.user_id,comment.post_id,comment.id), method: :delete ,data:{confirm: "want to delete"}, remote: true %>
+	   &nbsp;
+	<% end %>
+</small>
+

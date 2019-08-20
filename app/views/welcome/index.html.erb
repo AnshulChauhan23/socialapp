@@ -1,0 +1,25 @@
+
+<h1>Welcome</h1>
+<% if current_user.avatar.attached? %>
+	<%= image_tag current_user.avatar ,width:'150px', height:'150px' %>
+<% end %>
+<br><b> <%= current_user.name %> </b>	<br>
+
+
+<div>
+	Personal Details 
+	<br>	<br>
+	Mobile: <%= current_user.mobile %> <br>
+	Gender: <%= current_user.gender %> <br>
+	Date Of Birth: <%= current_user.dob %> <br>
+</div>
+
+
+<button>
+ <%= link_to "Create a Post",new_user_post_path(current_user.id) %>
+</button>
+
+ <br />
+<br />
+<br /><br />
+<%= link_to 'back', welcome_index_path%> &nbsp;

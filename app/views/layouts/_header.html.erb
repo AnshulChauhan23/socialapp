@@ -1,0 +1,47 @@
+ 
+
+  <nav class="navbar navbar-expand-sm fixed-top">
+  <div class="col"></div>
+   <div>
+<button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+   <i class="fas fa-bars"></i>
+  </button>
+  <div class="col list-unstyled menu collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav ">
+
+    <% if user_signed_in? %> 
+      
+      <li class=" nav-item"  ><i class='fas fa-user'></i>
+        <%= link_to 'View Profile',welcome_index_path, class:'linkstyle '  %> </li>
+        
+      <li class=" nav-item"  ><i class='fas fa-image'></i>
+        <%= link_to 'View Posts',user_posts_path(current_user.id), class:'linkstyle '  %> </li>
+
+
+      <li class=" nav-item"  ><i class='fas fa-comment-alt'></i>
+        <%= link_to 'Chat',user_chats_path(current_user.id), class:'linkstyle '  %> </li>
+
+      <li class=" nav-item" ><i class='fas fa-user-edit '></i>
+        <%= link_to 'Update Details ', edit_user_registration_path, class:'linkstyle' %></li> 
+      <li class=" nav-item" ><i class='fas fa-trash-alt'></i>
+        <%= link_to 'Delete account', user_registration_path, method: :delete, data: {confirm: 'are you sure?'}, class:'linkstyle' %></li>
+        
+      <li class=" nav-item"  ><i class='fas fa-lock'></i>
+        <%= link_to 'Sign out',destroy_user_session_path, method: :delete ,data: {confirm: 'Want to sign out'}, class:'linkstyle' %></li>
+
+      <% else %>
+
+      <li class=" nav-item" ><i class="fas fa-user-plus"></i> <%= link_to 'Register', new_user_registration_path, class:'linkstyle'%></li>
+      <li class=" nav-item"><i class='fas fa-unlock-alt'></i><%= link_to 'Sign in', new_user_session_path, class:'linkstyle' %></li>
+
+      <% end %>
+    </ul>
+
+   </div>
+  </div>
+</nav>     
+
+
+
+
+

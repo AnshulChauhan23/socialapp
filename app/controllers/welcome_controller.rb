@@ -1,9 +1,7 @@
 class WelcomeController < ApplicationController
   before_action :authenticate_user!
 
-
-
   def index
-  	@posts =Post.all
+  	@user = User.find(current_user.id)
   end
 end

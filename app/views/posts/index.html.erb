@@ -31,7 +31,7 @@
 
       <!-- Modal body -->
       <div class="modal-body">
-      	<%= form_for [current_user, @post], url:{action: 'create'} , remote: true do |form|%>
+      	<%= form_for [current_user, Post.new], url:{action: 'create'} , remote: true do |form|%>
 		<p id="post_txt"><%= form.text_area :text ,style:"width: 100%;"  %></p>
       <%= form.file_field :images, multiple: true %><br>
       </div>

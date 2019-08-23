@@ -4,22 +4,54 @@
 	<%= image_tag current_user.avatar ,width:'150px', height:'150px' %>
 <% end %>
 <br><b> <%= current_user.name %> </b>	<br>
-
-
-<div>
-	Personal Details 
-	<br>	<br>
-	Mobile: <%= current_user.mobile %> <br>
-	Gender: <%= current_user.gender %> <br>
-	Date Of Birth: <%= current_user.dob %> <br>
-</div>
-
-
+<br>
+<!--
+<label class="btn btn-primary fas fa-camera">
+     <span style="display:none;">
+            <%#= f.file_field :avatar %>
+     </span>
+</label>
+<%#= f.submit 'add profile'%>
+<% #end %>
+-->
 <button>
  <%= link_to "Create a Post",new_user_post_path(current_user.id) %>
 </button>
 
- <br />
-<br />
-<br /><br />
-<%= link_to 'back', welcome_index_path%> &nbsp;
+
+<div class="container">
+<div class="col-md-12"><h1 align="center">Posts </h1></div>
+<div class="col-md-6 postcontainer " id="PostContent">
+<% @user.posts.each do |post| %>
+<div id="OnePost_<%= post.id %>"class="border postbox" >
+	<%= post.user.name %><br />
+			<font size="1"><%= post.created_at %></font>&nbsp;
+				<%= link_to 'edit', edit_user_post_path(current_user.id ,post.id) %> &nbsp;
+				<%= link_to 'delete', user_post_path(current_user.id ,post.id), method: :delete ,data:{confirm: "want to delete"},class: 'button', remote: true %> &nbsp;
+			<p id="post_content_<%= post.id %>" ><%= post.text %></p>
+			
+			<%  post.images.each do |image| %>
+  			<%= image_tag image, width:'200px', height:'200px' %>
+  		<% end %>
+
+		
+		  <div id="post_<%= post.id %>">
+			  <% post.comments.each do |comment|%>
+
+			  	 <div id="PostComment_<%= comment.id %>">
+			  	 		<%= render "comments/comment" , comment: comment %>
+					 </div>
+			  <% end %>
+			</div>
+
+			<hr>
+			<div id="CreateComment">
+				 <%= form_for [current_user, post, Comment.new],remote: true do |f| %>
+				   <p id="commet_txt"> <%= f.text_area :text ,style:"width: 60%; height:30px; margin-top:3px;" %></p> &nbsp;
+					 <%= f.submit "Comment"  %>
+	 		   <% end %>
+		  </div>
+</div>
+<br>
+<%end%>
+	

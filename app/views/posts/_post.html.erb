@@ -4,7 +4,7 @@
 			<font size="1"><%=post.created_at %></font>&nbsp;
 			<% if post.user.id == current_user.id %>
 				<%= link_to 'edit', edit_user_post_path(current_user.id ,post.id) %> &nbsp;
-				<%= link_to 'delete', user_post_path(current_user.id ,post.id), method: :delete ,data:{confirm: "want to delete"},class: 'button', remote: true %> &nbsp;
+				<%= link_to 'delete', user_post_path(current_user.id ,post.id), method: :delete, remote: true %> &nbsp;
 			<% end %>
 			<p id="post_content_<%= post.id %>" ><%= post.text %></p>
 			

@@ -76,3 +76,5 @@ gem 'omniauth-google-oauth2'
 gem 'omniauth-facebook'
 
 gem 'active_storage_drag_and_drop'
+
+gem 'redis'
